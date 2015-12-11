@@ -1,13 +1,18 @@
+
+// by default hiding customer's select menu
 $("#selectMenu").hide();
+
 var nodetype;
 var prjCount=2;
 var sitCount=3;
+
 (function($) {
     $.fn.orgChart = function(options) {
         var opts = $.extend({}, $.fn.orgChart.defaults, options);
         return new OrgChart($(this), opts);        
     }
 
+    // contains the organization chart properties
     $.fn.orgChart.defaults = {
         data: [{id:1, name:'Root', parent: 0}],
         showControls: false,
@@ -19,6 +24,7 @@ var sitCount=3;
     };
    
 
+    // The following method design's org-chart nodes and 
     function OrgChart($container, opts){
         var data = opts.data;
         var nodes = {};
@@ -353,6 +359,8 @@ var sitCount=3;
             else{
                 buttonsHtml = '';
             }
+            
+            // for rootNode 
             if(this.data.id == 1){
             	
             	var buttonsHtml = "<div class='org-add-button'>"+opts.newNodeText+"</div><div id='org-list-button'></div><div class='org-del-button'></div><div class='org-del-button'></div><div class='drpCss'><span><input type='text' id='filter' /></span><select id='selectMenu' size='4'></select></div>";
