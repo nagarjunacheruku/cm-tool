@@ -13,10 +13,7 @@ div.orgChart h2 {
   min-height: 20px;
 }
 
-div.orgChart h2:hover {
-  background: #fcfaca;
-  cursor: text;
-}
+
 
 div.orgChart ul {
   list-style : none;

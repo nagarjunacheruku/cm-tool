@@ -24,7 +24,7 @@ var sitCount=3;
     };
    
 
-    // The following method design's org-chart nodes and 
+    // The following method design's org-chart nodes
     function OrgChart($container, opts){
         var data = opts.data;
         var nodes = {};
@@ -33,15 +33,19 @@ var sitCount=3;
         this.$container = $container;
         var self = this;
 
+        // draw the node
         this.draw = function(){
             $container.empty().append(rootNodes[0].render(opts));
+            
+            // added the node-id to node
             $container.find('.node').click(function(){
                 if(self.opts.onClickNode !== null){
                     self.opts.onClickNode(nodes[$(this).attr('node-id')]);
                 }
             });
 
-            if(opts.allowEdit){
+            // provides Node name edit option
+            if(!opts.allowEdit){
                 $container.find('.node h2').click(function(e){
                     var thisId = $(this).parent().attr('node-id');
                     self.startEdit(thisId);
@@ -61,6 +65,8 @@ var sitCount=3;
                 }
                 e.stopPropagation();
             });
+            
+            // form's select menu and show's the selectmenu on rootNodes customer's list button.
     	   $('#org-list-button').click(function(e){
     		   
     		   $("#selectMenu").append("<option value='CUS-901-001'>Vekomy</option><option value='CUS-103-001'>Reliance</option>");
@@ -68,7 +74,8 @@ var sitCount=3;
     		   $("#filter").show();
     		   $(".drpCss").show();
             });
-//		$(document).live("click","#selectMenu",function(){
+    	   
+    	   // forms the org-chart based on customer [ selected from drop-down list ].		
     	   $("#selectMenu").click(function(){
 			
 			if($(this).val() == "CUS-901-001"){
@@ -161,6 +168,8 @@ var sitCount=3;
 		}
 	$(this).hide();
 });	
+    	   
+    	   // adds delete button listener.
             $container.find('.org-del-button').click(function(e){
                 var thisId = $(this).parent().attr('node-id');
 
@@ -174,6 +183,7 @@ var sitCount=3;
             });
         }
 
+        // enables editing of node-name.
         this.startEdit = function(id){
             var inputElement = $('<input class="org-input" type="text" value="'+nodes[id].data.name+'"/>');
             $container.find('div[node-id='+id+'] h2').replaceWith(inputElement);
@@ -200,8 +210,10 @@ var sitCount=3;
             })
         }
 
+        // creates new node. 
         this.newNode = function(parentId){
             var nextId = Object.keys(nodes).length;
+            // check last node-id and add new index to latest one.
             while(nextId in nodes){
                 nextId++;
             }
@@ -214,7 +226,8 @@ var sitCount=3;
             }
             
         }
-
+        
+        // calls when add child button event raised.
         this.addNode = function(data){
             var newNode = new Node(data);
             nodes[data.id] = newNode;
@@ -224,6 +237,7 @@ var sitCount=3;
             self.startEdit(data.id);
         }
 
+        // calls when delete button event raised.
         this.deleteNode = function(id){
             for(var i=0;i<nodes[id].children.length;i++){
                 self.deleteNode(nodes[id].children[i].data.id);
@@ -280,6 +294,7 @@ var sitCount=3;
             }
         }
 
+        // append html code for node
         this.render = function(opts){
             var childLength = self.children.length,
                 mainTable;
@@ -326,6 +341,7 @@ var sitCount=3;
             return mainTable;
         }
 
+        //formats node structure
         this.formatNode = function(opts){
             var nameString = '',
                 descString = '';
@@ -351,21 +367,19 @@ var sitCount=3;
             
             
             if(opts.showControls){
-            	
             		var buttonsHtml = "<div class='org-add-button'>"+opts.newNodeText+"</div><div class='org-del-button'></div>";	
-            	
-                
             }
             else{
                 buttonsHtml = '';
             }
             
-            // for rootNode 
+            // for rootNode adding select menu contained button.
             if(this.data.id == 1){
             	
             	var buttonsHtml = "<div class='org-add-button'>"+opts.newNodeText+"</div><div id='org-list-button'></div><div class='org-del-button'></div><div class='org-del-button'></div><div class='drpCss'><span><input type='text' id='filter' /></span><select id='selectMenu' size='4'></select></div>";
             	return "<div class='node' node-id='"+this.data.id+"'>"+nameString+descString+buttonsHtml+"</div>";
             }else{
+            	// for children nodes.
             	return "<div class='node' node-id='"+this.data.id+"'>"+nameString+descString+buttonsHtml+"</div>";	
             }
             
