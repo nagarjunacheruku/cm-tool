@@ -1,6 +1,6 @@
 
 div.orgChart {
-    
+     margin: 10px;
     padding: 20px;
     background-color: lavenderblush;
         overflow: auto;
@@ -51,13 +51,38 @@ div.orgChart td {
 }
 
 div.orgChart div.node {
-	cursor: default;
+  /* cursor : default;
+  border : 1px solid #e7e7e7;
+  display : inline-block;
+  padding : 5px;
+  width : 96px;
+  height : 60px;
+  background: #ffffff; Old browsers
+  background: -moz-linear-gradient(top, #ffffff 0%, #fbfbfb 100%); FF3.6+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #fbfbfb)); Chrome,Safari4+
+  background: -webkit-linear-gradient(top, #ffffff 0%, #fbfbfb 100%); Chrome10+,Safari5.1+
+  background: -o-linear-gradient(top, #ffffff 0%, #fbfbfb 100%); Opera 11.10+
+  background: -ms-linear-gradient(top, #ffffff 0%, #fbfbfb 100%); IE10+
+  background: linear-gradient(to bottom, #ffffff 0%, #fbfbfb 100%); W3C
+  line-height : 1.3em;
+  border-radius : 4px;
+  -moz-border-radius : 4px;
+  -webkit-border-radius : 4px;
+  position: relative;
+  box-shadow: 1px 1px 0px #ddd; */
+  cursor: default;
     border: 1px solid #e7e7e7;
     display: inline-block;
     padding: 5px;
     width: 145px;
     height: 70px;
     background: #64AEDA;
+/*     background: -moz-linear-gradient(top, #ffffff 0%, #fbfbfb 100%); */
+/*     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #fbfbfb)); */
+/*     background: -webkit-linear-gradient(top, #ffffff 0%, #fbfbfb 100%); */
+/*     background: -o-linear-gradient(top, #ffffff 0%, #fbfbfb 100%); */
+/*     background: -ms-linear-gradient(top, #ffffff 0%, #fbfbfb 100%); */
+/*     background: linear-gradient(to bottom, #ffffff 0%, #fbfbfb 100%); */
 	background: linear-gradient(to bottom, rgba(19, 19, 19, 0.41) 0%, #fbfbfb 100%)
     line-height: 1.3em;
     border-radius: 4px;
@@ -66,7 +91,7 @@ div.orgChart div.node {
     position: relative;
     box-shadow: 1px 1px 0px #ddd;
     border-radius: 12px;
-    border-color: #025b90;
+    border-color: sandybrown;
 }
 
 .org-add-button,
@@ -203,12 +228,12 @@ bottom: 0px;
     position:relative; */
 }
 .divHeight{
-	height : 450px;
+	height : 500px;
 
 }
 .documents{
 	    overflow: auto;
-	    height : 450px;
+	    height : 500px;
 }
 .orgchartDivHeight{
 	height : 450px;
@@ -222,7 +247,7 @@ bottom: 0px;
 	display:none; /* Hide the DIV */
 	position:fixed;  
 	_position:absolute; /* hack for internet explorer 6 */  
-	
+	height:100px;  
 	width:600px;  
 	background:#FFFFFF;  
 	left: 300px;
@@ -237,7 +262,7 @@ bottom: 0px;
 	-moz-box-shadow: 0 0 5px #ff0000;
 	-webkit-box-shadow: 0 0 5px #ff0000;
 	box-shadow: 0 0 5px #ff0000;
-	height:330px;  
+	
 }
 
 #container {
@@ -251,7 +276,6 @@ cursor: pointer;
 text-decoration:none;  
 } 
 
-
 /* This is for the positioning of the Close Link */
 #popupBoxClose {
 	font-size:20px;  
@@ -261,4 +285,3 @@ text-decoration:none;
 	position:absolute;  
 	color:#6fa5e2;  
 	font-weight:500;  
-}

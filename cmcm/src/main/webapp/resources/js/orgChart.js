@@ -69,11 +69,18 @@ var jqgridHandler ={
 			/*
 			$("#grid").jqGrid('setGridParam', {onSelectRow: function(rowid,iRow,iCol,e){alert('row clicked');}});
 			*/
+			
 			$("#grid").jqGrid('setGridParam', {ondblClickRow: function(rowid,iRow,iCol,e){alert('double clicked');}});
 			$(document).off('click').on('click','.node-h6',function(e){
 				//$('.label_node').click(function(e){
 			    	console.log(e.target.innerText);
 			    	$('.data, .exporttoExcel').remove();
+			    	$("<p>").html(html).text(); 
+//			    	$("#popup_box").append('<input type="radio" name="sitprj" value="++" checked> CUS');
+			    	loadPopupBox();
+			    	$("input:radio[name=sitprj]").click(function(){
+			    		alert($(this).val());
+			    	});
 			    	 docsJSon=[
 			    	          {
 			    			"docid": "001",
